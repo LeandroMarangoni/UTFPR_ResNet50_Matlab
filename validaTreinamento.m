@@ -1,6 +1,10 @@
-I = imread( "images (1).jfif" );
+I = imread( "Sem título.jpg" );
 I = imresize(I, [224 224]);
-[YPred,probs] = classify(trainedNetwork_3,I);
+[YPred,probs] = classify(trainedNetwork_2,I);
 imshow(I)
 label = YPred;
-title(string(label) + ", " + num2str(100*max(probs),3) + "%")
+if probs <= 0.8 | string(label) == "Não Reconhecido"  
+    title("Não reconhecido")
+else
+    title(string(label) + ", " + num2str(100*max(probs),3) + "%")
+end
