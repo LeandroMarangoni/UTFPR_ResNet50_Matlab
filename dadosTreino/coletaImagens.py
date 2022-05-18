@@ -49,15 +49,30 @@ def buscaAnimais(animais, nImagens):
         except:
             continue #Caso não encontre o elemento, passa pra próxima
 
-extintos = ('Ariranha','Lobo Guará', 'Onça Pintada') #Tupla com os animais em risco de extinção
+extintosCriticos = ('African forest elephant', 'Amur Leopard', 'Black Rhino', 'Bornean Orangutan', 'Cross River Gorilla', 'Eastern Lowland Gorilla',
+            'Hawksbill Turtle', 'Javan Rhino', 'Orangutan', 'Saola', 'Sumatran Elephant', 'Sumatran Orangutan', 'Sumatran Rhino', 'Sunda Tiger',
+            'Vaquita', 'Western Lowland Gorilla', 'Yangtze Finless Porpoise') #Tupla com os animais em risco de extinção
+extintos = ('African savanna elephant', 'African Wild Dog', 'Asian Elephant', 'Black-footed Ferret', 'Blue Whale', 'Bluefin Tuna', 'Bonobo', 
+            'Chimpanzee', 'Fin Whale', 'Galápagos Penguin', 'Ganges River Dolphin', 'Green Turtle', 'Hectors Dolphin', 'Humphead Wrasse'
+            'Indian Elephant', 'Indus River Dolphin', 'Irrawaddy Dolphin', 'Mountain Gorilla', 'North Atlantic Right Whale',
+            'Red Panda', 'Sea Lions', 'Sea Turtle', 'Sei Whale', 'Sri Lankan Elephant', 'Tiger', 'Whale', 'Whale Shark')
 nreconhecidos = ('Cachorro','Gato','Cavalo') #Tupla com os animais sem risco de extinção
+
+for animais in extintosCriticos:  #Para cada animal em risco na tupla...
+    path = './' + animais #Diretório com o nome do animal
+    os.makedirs(path) #Cria uma pasta com esse diretório 
+    os.chdir(path) #Acessa a pasta para salvar as imagens internamente
+    
+    buscaAnimais(animais, 50) #Busca e printa as imagens do animal em risco
+
+    os.chdir('../') #Volta para a pasta original para os próximos animais
 
 for animais in extintos:  #Para cada animal em risco na tupla...
     path = './' + animais #Diretório com o nome do animal
     os.makedirs(path) #Cria uma pasta com esse diretório 
     os.chdir(path) #Acessa a pasta para salvar as imagens internamente
     
-    buscaAnimais(animais, 15) #Busca e printa as imagens do animal em risco
+    buscaAnimais(animais, 50) #Busca e printa as imagens do animal em risco
 
     os.chdir('../') #Volta para a pasta original para os próximos animais
     
